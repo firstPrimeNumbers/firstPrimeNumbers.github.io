@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <span>Nhập số</span> <input id="number" onkeyup="find()" type="number" min="1">
+    <p id="out"></p>
+    <script>
+        function isPrimeNumber(num) {
+            if (num < 2) return false
+            let sqrt = Math.round(Math.sqrt(num))
+            for (let i = 2; i <= sqrt; i++)
+                if (num % i == 0) return false
+            return true
+        }
+        console.log(isPrimeNumber(21))
+        let dem = 0, i = 2
+        let out = document.getElementById('out')
+        function find() {
+            let number = parseInt(document.getElementById('number').value)
+            while (dem < number){
+                if (isPrimeNumber(i)){
+                    dem++
+                    out.innerHTML += `Số thứ ${dem}: ${i}<br>`
+                }
+                i++
+            }
+            if (isNaN(number)) out.innerHTML = ''
+        }
+    </script>
+</body>
+
+</html>
